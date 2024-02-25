@@ -25,4 +25,24 @@ contract MetaCrafterSchool {
         _;
     }
 
+    function adminEnrolStudent(address _student, string memory _name, uint8 _age) external onlyAdmin {
+        if (_student == address(0)) revert("Address zero is not allowed");
+        if (_age <= 0) revert("Invalid age");
+
+        Student storage newStudent = students[_student];
+
+        if (newStudent.id != address(0)) revert("Student already exist");
+
+        newStudent.id = _student;
+        newStudent.name = _name;
+        newStudent.age = _age;
+    }
+
+    function getStudent(address _student) external view returns (Student memory) {
+
+        Student memory student = students[_student];
+        if (student.id == address(0)) revert("Student with that Id does not exist in this school");
+        return student;
+    }
+
 }
