@@ -15,4 +15,14 @@ contract MetaCrafterSchool {
         uint8 age;
         uint16 result;
     }
+
+    constructor() {
+        admin = msg.sender;
+    }
+
+    modifier onlyAdmin() {
+        require(admin == msg.sender, "Only admin can perform this operation");
+        _;
+    }
+
 }
