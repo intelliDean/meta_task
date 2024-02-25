@@ -45,4 +45,10 @@ contract MetaCrafterSchool {
         return student;
     }
 
+    function adminUpdateStudentResult(address _student, uint16 result) external onlyAdmin {
+        assert(result > 0);
+        Student storage foundStudent = students[_student];
+        foundStudent.result = result;
+    }
+
 }
