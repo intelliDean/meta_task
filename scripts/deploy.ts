@@ -2,7 +2,7 @@ import { ethers } from "hardhat";
 
 async function main() {
 
-  const meta = await ethers.deployContract("MetaCrafterSchool");
+  const meta = await ethers.deployContract("MetaTask");
 
   await meta.waitForDeployment();
 
